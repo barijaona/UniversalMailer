@@ -359,7 +359,11 @@
     self.originalHeaders = string;
     self.headers = [@{} mutableCopy];
     
-    NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern: @"[\n\r]+[ \t]+" options: 0 error: nil];
+    if (string == nil) {
+        return;
+    }
+    NSError *error = nil;
+    NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern: @"[\n\r]+[ \t]+" options: 0 error: &error];
     NSString *s = [regex stringByReplacingMatchesInString: string options: 0 range: NSMakeRange(0, string.length) withTemplate: @""];
     for( NSString *line in [s componentsSeparatedByString: @"\n"] ){
         NSRange sc = [line rangeOfString: @":"];
