@@ -10,7 +10,6 @@
 
 #import <Cocoa/Cocoa.h>
 #import <Sparkle/Sparkle.h>
-#import <GoogleAnalyticsTracker/GoogleAnalyticsTracker.h>
 #import <objc/runtime.h>
 
 #import "UMConstants.h"
@@ -49,29 +48,11 @@
                                UMOutgoingFontName: [[NSUserDefaults standardUserDefaults] objectForKey: @"NSFont"],
                                UMOutgoingFontSize: [[NSUserDefaults standardUserDefaults] objectForKey: @"NSFontSize"],
                                UMOutgoingFontColor: colorData,
-                               UMSendUsageStats: @(YES),
+                               UMSendUsageStats: @(NO),
                                UMFirstInstallation: @(YES),
                                };
     [[NSUserDefaults standardUserDefaults] registerDefaults: defaults];
 
-    if( [[NSUserDefaults standardUserDefaults] boolForKey: UMSendUsageStats] ){
-        MPAnalyticsConfiguration *configuration = [[MPAnalyticsConfiguration alloc] initWithAnalyticsIdentifier: @"UA-41621933-1"];
-        [MPGoogleAnalyticsTracker activateConfiguration: configuration];
-        
-        if( [[NSUserDefaults standardUserDefaults] boolForKey: UMFirstInstallation] ){
-            NSBundle *bundle = [NSBundle bundleForClass: [self class]];
-            NSString *shortVersion = [bundle objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
-            NSString *build = [bundle objectForInfoDictionaryKey: (NSString*)kCFBundleVersionKey];
-            NSString *version = [NSString stringWithFormat: @"%@ (%@)", shortVersion, build];
-            [MPGoogleAnalyticsTracker trackEventOfCategory: @"Plugin"
-                                                    action: @"First Installation"
-                                                     label: version
-                                                     value: @0];
-            [[NSUserDefaults standardUserDefaults] setBool: NO forKey: UMFirstInstallation];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-        }
-    }
-        
     Class mvMailBundleClass = NSClassFromString(@"MVMailBundle");
     if( mvMailBundleClass ){
         [mvMailBundleClass registerBundle];

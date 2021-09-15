@@ -8,7 +8,6 @@
 
 #import "UMMessageGenerator.h"
 
-#import <GoogleAnalyticsTracker/GoogleAnalyticsTracker.h>
 #import "UMConstants.h"
 #import "UMLog.h"
 #import "UMFilter.h"
@@ -25,12 +24,6 @@
     id ret = nil;
 
     UMLog(@"%s - always send rich text email: %d", __PRETTY_FUNCTION__, alwaysSendRich);
-    if( [[NSUserDefaults standardUserDefaults] boolForKey: UMSendUsageStats] ){
-        [MPGoogleAnalyticsTracker trackEventOfCategory: @"Message"
-                                                action: @"New Message"
-                                                 label: @"Plain Text"
-                                                 value: @(alwaysSendRich)];
-    }
     
     ret = [self UMnewMessageWithAttributedString: string headers: headers];
     
@@ -68,13 +61,6 @@
     if( [self respondsToSelector: NSSelectorFromString(@"encryptionCertificates")] && [self valueForKey: @"encryptionCertificates"] ){
         UMLog(@"%s - GPGMail detected using encryptionCertificates method [%@]", __PRETTY_FUNCTION__, [self valueForKey: @"encryptionCertificates"]);
         gpgMailDetected = YES;
-    }
-
-    if( [[NSUserDefaults standardUserDefaults] boolForKey: UMSendUsageStats] ){
-        [MPGoogleAnalyticsTracker trackEventOfCategory: @"Message"
-                                                action: @"New Message"
-                                                 label: @"Rich Text"
-                                                 value: @0];
     }
     
     if( !gpgMailDetected && [ret valueForKey: @"_rawData"] ){
