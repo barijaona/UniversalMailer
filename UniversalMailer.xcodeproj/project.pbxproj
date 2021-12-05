@@ -385,7 +385,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [[ $CONFIGURATION != \"Debug\" ]]; then\npkgbuild --root \"$BUILT_PRODUCTS_DIR/UniversalMailer.mailbundle/\" --scripts \"$SRCROOT/installation_scripts/\" --identifier it.noware.universalmailer.pkg --install-location \"/tmp/UM-installation-tmp/UniversalMailer.mailbundle\" \"$BUILT_PRODUCTS_DIR/UniversalMailer.pkg\"\nopen \"$BUILT_PRODUCTS_DIR\"\nelse\necho \"warning: installer not generated with Debug configuration\"\nfi\n";
+			shellScript = "if [[ $CONFIGURATION != \"Debug\" ]]; then\npkgbuild --root \"$BUILT_PRODUCTS_DIR/UniversalMailer.mailbundle/\" --scripts \"$SRCROOT/Scripts/installation_scripts/\" --identifier it.noware.universalmailer.pkg --install-location \"/tmp/UM-installation-tmp/UniversalMailer.mailbundle\" \"$BUILT_PRODUCTS_DIR/UniversalMailer.pkg\"\nopen \"$BUILT_PRODUCTS_DIR\"\nelse\necho \"warning: installer not generated with Debug configuration\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
