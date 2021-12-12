@@ -22,4 +22,8 @@ pkgbuild --root "$BUILT_PRODUCTS_DIR/UniversalMailer.mailbundle/" --scripts "$SR
          --sign "${PKG_SIGN_IDENTITY}" \
          "$BUILT_PRODUCTS_DIR/UniversalMailer.pkg"
 
+xcrun notarytool submit "$BUILT_PRODUCTS_DIR/UniversalMailer.pkg" --keychain-profile "AC_PASSWORD" --wait
+xcrun stapler staple -v "$BUILT_PRODUCTS_DIR/UniversalMailer.mailbundle"
+xcrun stapler staple -v "$BUILT_PRODUCTS_DIR/UniversalMailer.pkg"
+
 open "$BUILT_PRODUCTS_DIR"
