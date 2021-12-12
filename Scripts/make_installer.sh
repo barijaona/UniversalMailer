@@ -25,5 +25,9 @@ pkgbuild --root "$BUILT_PRODUCTS_DIR/UniversalMailer.mailbundle/" --scripts "$SR
 xcrun notarytool submit "$BUILT_PRODUCTS_DIR/UniversalMailer.pkg" --keychain-profile "AC_PASSWORD" --wait
 xcrun stapler staple -v "$BUILT_PRODUCTS_DIR/UniversalMailer.mailbundle"
 xcrun stapler staple -v "$BUILT_PRODUCTS_DIR/UniversalMailer.pkg"
+if ! spctl --verbose=4 --assess --type install "$BUILT_PRODUCTS_DIR/UniversalMailer.pkg"; then
+    echo "Error: Installer will not be accepted by Gatekeeper!" 1>&2
+    exit 1
+fi
 
 open "$BUILT_PRODUCTS_DIR"
