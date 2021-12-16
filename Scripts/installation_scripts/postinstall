@@ -68,32 +68,4 @@ defaults write "/Library/Preferences/com.apple.mail" EnableBundles -bool YES
 defaults write "/Library/Preferences/com.apple.mail" BundleCompatibilityVersion -int 3
 ################################################################################
 
-
-# Add the PluginCompatibilityUUIDs #############################################
-echo "[universal_mailer] Adding PluginCompatibilityUUIDs..."
-plistBundle="$target/$bundle/Contents/Info"
-plistMail="/Applications/Mail.app/Contents/Info"
-plistFramework="/System/Library/Frameworks/Message.framework/Resources/Info"
-
-uuid1=$(defaults read "$plistMail" "PluginCompatibilityUUID")
-uuid2=$(defaults read "$plistFramework" "PluginCompatibilityUUID")
-
-if [[ -n "$uuid1" ]] && ! grep -q $uuid1 "${plistBundle}.plist" ;then
-	defaults write "$plistBundle" "Supported10.13PluginCompatibilityUUIDs" -array-add "$uuid1"
-	defaults write "$plistBundle" "Supported10.12PluginCompatibilityUUIDs" -array-add "$uuid1"
-	defaults write "$plistBundle" "SupportedPluginCompatibilityUUIDs" -array-add "$uuid1"
-fi
-if [[ -n "$uuid2" ]] && ! grep -q $uuid2 "${plistBundle}.plist" ;then
-	defaults write "$plistBundle" "Supported10.13PluginCompatibilityUUIDs" -array-add "$uuid2"
-	defaults write "$plistBundle" "Supported10.12PluginCompatibilityUUIDs" -array-add "$uuid2"
-	defaults write "$plistBundle" "SupportedPluginCompatibilityUUIDs" -array-add "$uuid2"
-fi
-
-plutil -convert xml1 "$plistBundle.plist"
-chmod +r "$plistBundle.plist"
-
-spctl --add --label "ApprovedApps" "$target/$bundle"
-spctl --enable --label "ApprovedApps"
-################################################################################
-
 exit 0
