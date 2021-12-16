@@ -14,3 +14,4 @@ defaults write "$INFO" Supported11.4PluginCompatibilityUUIDs -array-add 'D985F0E
 defaults write "$INFO" Supported11.5PluginCompatibilityUUIDs -array-add 'D985F0E4-3BBC-4B95-BBA1-12056AC4A531'
 defaults write "$INFO" Supported11.6PluginCompatibilityUUIDs -array-add 'D985F0E4-3BBC-4B95-BBA1-12056AC4A531'
 defaults write "$INFO" Supported12.0PluginCompatibilityUUIDs -array-add '25288CEF-7D9B-49A8-BE6B-E41DA6277CF3'
+defaults write "$INFO" Supported12.1PluginCompatibilityUUIDs -array-add '6FF8B077-81FA-45A4-BD57-17CDE79F13A5'
