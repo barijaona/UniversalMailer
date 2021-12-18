@@ -6,6 +6,9 @@
 INFO="${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/../Info.plist"
 
 defaults write "$INFO" Supported10.12PluginCompatibilityUUIDs -array-add '21560BD9-A3CC-482E-9B99-95B7BF61EDC1'
+defaults write "$INFO" Supported10.12PluginCompatibilityUUIDs -array-add '1CD3B36A-0E3B-4A26-8F7E-5BDF96AAC97E'
+defaults write "$INFO" Supported10.12PluginCompatibilityUUIDs -array-add '9054AFD9-2607-489E-8E63-8B09A749BC61'
+defaults write "$INFO" Supported10.12PluginCompatibilityUUIDs -array-add '36CCB8BB-2207-455E-89BC-B9D6E47ABB5B'
 defaults write "$INFO" Supported10.13PluginCompatibilityUUIDs -array-add 'C86CD990-4660-4E36-8CDA-7454DEB2E199'
 defaults write "$INFO" Supported10.14PluginCompatibilityUUIDs -array-add 'A4343FAF-AE18-40D0-8A16-DFAE481AF9C1'
 defaults write "$INFO" Supported10.15PluginCompatibilityUUIDs -array-add '6EEA38FB-1A0B-469B-BB35-4C2E0EEA9053'
