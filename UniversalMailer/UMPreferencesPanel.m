@@ -68,7 +68,7 @@
         NSBundle *bundle = [NSBundle bundleForClass: [self class]];
         NSString *shortVersion = [bundle objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
         NSString *build = [bundle objectForInfoDictionaryKey: (NSString*)kCFBundleVersionKey];
-        self.versionLabel.stringValue = [NSString stringWithFormat: @"Version: %@ (build %@)", shortVersion, build];
+        self.versionLabel.stringValue = [NSString stringWithFormat: @"Version: %@\n(build %@)", shortVersion, build];
     }
     if( self.injectedCSSLabel ){
         self.injectedCSSLabel.umDelegate = self;
