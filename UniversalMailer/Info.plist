@@ -15,11 +15,13 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.0</string>
+	<string>AUTOFILL</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>19</string>
+	<string>AUTOFILL</string>
+	<key>CommitHash</key>
+	<string>AUTOFILL</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2017 noware. All rights reserved.</string>
 	<key>NSPrincipalClass</key>

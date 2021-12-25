@@ -5,6 +5,16 @@
 
 INFO="${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/../Info.plist"
 
+BUILD_VERSION="$(git rev-list --count HEAD)"
+COMMIT_HASH="$(git rev-parse HEAD)"
+VERSION="$(git describe HEAD |  sed -e 's:^v/::' | sed -e 's:_beta: Beta :' -e 's:_rc: RC :')"
+
+/usr/libexec/PlistBuddy \
+  -c "Set CFBundleVersion '$BUILD_VERSION'" \
+  -c "Set CommitHash '$COMMIT_HASH'" \
+  -c "Set CFBundleShortVersionString '$VERSION'" \
+  "$INFO" || exit 2
+
 defaults write "$INFO" Supported10.12PluginCompatibilityUUIDs -array-add '21560BD9-A3CC-482E-9B99-95B7BF61EDC1'
 defaults write "$INFO" Supported10.12PluginCompatibilityUUIDs -array-add '1CD3B36A-0E3B-4A26-8F7E-5BDF96AAC97E'
 defaults write "$INFO" Supported10.12PluginCompatibilityUUIDs -array-add '9054AFD9-2607-489E-8E63-8B09A749BC61'
