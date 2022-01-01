@@ -31,7 +31,7 @@
 	<key>SUPublicEDKey</key>
 	<string>k4NnJLgWZgEnBoXG+Ra4e6fCN5UhGxZXK1HwpnlSbxA=</string>
 	<key>SUFeedURL</key>
-	<string>https://universalmailer.github.io/UniversalMailer/appcast/appcast.xml</string>
+	<string>https://blog.barijaona.com/macintosh/universalmailer/appcast.xml</string>
 	<key>SupportedPluginCompatibilityUUIDs</key>
 	<array>
 		<string>71562B89-0D90-4588-8E94-A75B701D6443</string>
