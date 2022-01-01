@@ -30,4 +30,48 @@ if ! spctl --verbose=4 --assess --type install "$BUILT_PRODUCTS_DIR/UniversalMai
     exit 1
 fi
 
+BUILD_VERSION="$(git rev-list --count HEAD)"
+VERSION="$(git describe HEAD |  sed -e 's:^v/::' | sed -e 's:_beta: Beta :' -e 's:_rc: RC :')"
+pubDate="$(git show -s --pretty=format:%cD HEAD)"
+
+GITHUB_REPO="https://github.com/barijaona/UniversalMailer"
+SUBDIR="$(git describe --tags --abbrev=0 HEAD |  sed -e 's:^v/:v%2F:')"
+GITHUB_RELEASE_URL="${GITHUB_REPO}/releases/tag/${SUBDIR}"
+GITHUB_DOWNLOAD_URL="${GITHUB_REPO}/releases/download/${SUBDIR}/UniversalMailer.pkg"
+
+SPARKLE_BIN="${BUILT_PRODUCTS_DIR}/../../../SourcePackages/artifacts/Sparkle/bin"
+
+if [ ! -d "$SPARKLE_BIN" ]; then
+	printf 'Unable to locate Sparkle binaries in the binary Swift Package. ' 1>&2
+	printf 'Resolve the Swift Packages in Xcode first.\n' 1>&2
+	exit 1
+fi
+
+export PATH="$SPARKLE_BIN:$PATH"
+
+ED_SIGNATURE_AND_LENGTH="$(sign_update "$BUILT_PRODUCTS_DIR/UniversalMailer.pkg")"
+
+cat > "$BUILT_PRODUCTS_DIR/appcast.xml" << EOF
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+	<channel>
+		<title>UniversalMailer's Changelog</title>
+		<link>${GITHUB_REPO}/releases</link>
+		<description>Most recent changes with links to updates</description>
+		<language>en-us</language>
+		<copyright>Copyright 2017 noware.it, plus contributors</copyright>
+		<item>
+			<title>UniversalMailer ${VERSION} (build ${BUILD_VERSION})</title>
+			<pubDate>${pubDate}</pubDate>
+			<link>${GITHUB_RELEASE_URL}</link>
+			<sparkle:version>${BUILD_VERSION}</sparkle:version>
+			<sparkle:shortVersionString>${VERSION} (build ${BUILD_VERSION})</sparkle:shortVersionString>
+			<sparkle:minimumSystemVersion>${MACOSX_DEPLOYMENT_TARGET}.0</sparkle:minimumSystemVersion>
+			<enclosure url="${GITHUB_DOWNLOAD_URL}" $ED_SIGNATURE_AND_LENGTH type="application/octet-stream" />
+		</item>
+	</channel>
+</rss>
+
+EOF
+
 open "$BUILT_PRODUCTS_DIR"
