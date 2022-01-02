@@ -1,14 +1,11 @@
-UniversalMailer 3.0
--------------------
+UniversalMailer
+---------------
+### (Barijaona's fork)
 
 [UniversalMailer][1] is a Mail.app plugin that aims at setting the default font for outgoing emails and fixing issues
 with attachments (especially when passing through MS Exchange/Outlook). It also removes those annoying ATT0001 files from your emails, bringing mail composing to the 21st century :)
 
-**|  [Home page][1] | [Download][2] | [What's new][3] | [Installation & Usage][4] | [FAQ][5] |**
-
-[![Build status](https://img.shields.io/travis/UniversalMailer/UniversalMailer.svg?maxAge=2592000)]()
-[![Code Triagers Badge](https://www.codetriage.com/universalmailer/universalmailer/badges/users.svg)](https://www.codetriage.com/universalmailer/universalmailer)
-[![PRs Welcome](https://img.shields.io/badge/pr-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com)
+**|  [Home page][1] | [Download][2] | [Version history][3] | [Installation & Usage][4] | [FAQ][5] |**
 
 Do I need it?
 -------------
@@ -25,10 +22,12 @@ If any of that describes your frustrations, give UniversalMailer a try and see i
 Reporting issues
 ------
 
-The plugin is not perfect: it might shows some quirks from time to time. If you think you encountered a bug you can use the [issue tracker][6] here on GitHub to report it. While issues are well organized and ordered, be sure to follow these simple rules in favour of quicker bug fixing:
+The plugin is not perfect: it might shows some quirks from time to time. Ask other users for help and confirmation of similar problems in the [Discussions space][8].
 
-* be sure to read existing issues to avoid duplicates
-* provide as much information as you can, you can enable logging in the plugin preference panel to log what's happening
+If you think you encountered a bug you can use the [issue tracker][6] here on GitHub to report it. While issues are well organized and ordered, be sure to follow these simple rules in favour of quicker bug fixing:
+
+* be sure to read existing discussions and issues to avoid duplicates
+* provide as much information as you can; you can enable logging in the plugin preference panel to log what's happening
 * if you can reproduce the problem, specify as much information as possible on how to replicate it (plugin version, your language, the plugin preferences, whether you included attachments, what kind of attachments etc.)
 * when you create an issue, tag it with the 'bug' tag
 
@@ -40,14 +39,13 @@ Copyright and License
 Copyright (C) 2016 noware under [GPLv3](LICENSE). All rights reserved.
 
 UniversalMailer uses Sparkle.framework to check for updates, check Sparkle project [website][7] for license and other information.
-The Google Analytics Tracker framework is released under MIT license. See [website][8] for more information.
 
 
-[1]: https://universalmailer.github.io/UniversalMailer/
-[2]: https://universalmailer.github.io/UniversalMailer/download.html
-[3]: https://universalmailer.github.io/UniversalMailer/whatsnew.html
-[4]: https://universalmailer.github.io/UniversalMailer/usage.html
-[5]: https://universalmailer.github.io/UniversalMailer/faq.html
+[1]: https://github.com/barijaona/UniversalMailer
+[2]: https://github.com/barijaona/UniversalMailer/releases/latest
+[3]: https://github.com/barijaona/UniversalMailer/releases
+[4]: https://github.com/barijaona/UniversalMailer/wiki/Installation-&-Usage
+[5]: https://github.com/barijaona/UniversalMailer/wiki/FAQ-(Frequently-asked-questions)
 [6]: https://github.com/UniversalMailer/UniversalMailer/issues
 [7]: https://sparkle-project.org
-[8]: https://github.com/MacPaw/Google-Analytics-for-OS-X
+[8]: https://github.com/barijaona/UniversalMailer/discussions
