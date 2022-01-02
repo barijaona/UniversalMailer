@@ -8,6 +8,12 @@ if [ ! "${CONFIGURATION}" = "Release" ]; then
     exit 1
 fi
 
+# Check if we are on a clean version control tag
+if [ ! "$(git describe --dirty )" = "$(git describe --tags --abbrev=0)" ]; then
+    echo "error: This should be run on a version identified with a tag ; check your Git status." >&2
+    exit 1
+fi
+
 CODE_SIGN_IDENTITY="Developer ID Application: Barijaona Ramaholimihaso"
 PKG_SIGN_IDENTITY="Developer ID Installer: Barijaona Ramaholimihaso"
 frameworks_path="$BUILT_PRODUCTS_DIR/UniversalMailer.mailbundle/Contents/Frameworks"
