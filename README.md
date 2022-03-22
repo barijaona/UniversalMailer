@@ -22,7 +22,7 @@ If any of that describes your frustrations, give UniversalMailer a try and see i
 Reporting issues
 ------
 
-The plugin is not perfect: it might shows some quirks from time to time. Ask other users for help and confirmation of similar problems in the [Discussions space][8].
+The plugin is not perfect: it might show some quirks from time to time. Ask other users for help and confirmation of similar problems in the [Discussions space][8].
 
 If you think you encountered a bug you can use the [issue tracker][6] here on GitHub to report it. While issues are well organized and ordered, be sure to follow these simple rules in favour of quicker bug fixing:
 
@@ -46,6 +46,6 @@ UniversalMailer uses Sparkle.framework to check for updates, check Sparkle proje
 [3]: https://github.com/barijaona/UniversalMailer/releases
 [4]: https://github.com/barijaona/UniversalMailer/wiki/Installation-&-Usage
 [5]: https://github.com/barijaona/UniversalMailer/wiki/FAQ-(Frequently-asked-questions)
-[6]: https://github.com/UniversalMailer/UniversalMailer/issues
+[6]: https://github.com/barijaona/UniversalMailer/issues
 [7]: https://sparkle-project.org
 [8]: https://github.com/barijaona/UniversalMailer/discussions
